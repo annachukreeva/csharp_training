@@ -6,24 +6,19 @@ using System.Threading.Tasks;
 
 namespace addressbook_web_tests
 {
-    class Circle : Figure
-    {
-        private int radius;
-     
-        public Circle(int radius)
-        {
-            this.radius = radius;
-        }
-        public int Radius
+    class Figure
+            {
+        private bool Colored = false;
+        public bool colored
         {
             get
             {
-                return radius;
+                return colored;
             }
             set
             {
-                radius = value;
+                colored = value;
             }
         }
-            }
+    }
 }
