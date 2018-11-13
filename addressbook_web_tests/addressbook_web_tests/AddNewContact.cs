@@ -45,8 +45,7 @@ namespace WebAddressbooktests
             GoToHomePage();
             Login(new AccountData ("admin", "secret"));
             AddNew();
-            FillTheDataIn("Anna", "Chukreeva", "1", "2", "3", "4", "5", "6", "7", 
-                "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22");
+            FillTheDataIn(new ContactData("Anna", "Chukreeva"));
             Submit();
             ReturnHome();
             Logout();
@@ -67,88 +66,82 @@ namespace WebAddressbooktests
             driver.FindElement(By.Name("submit")).Click();
         }
 
-        private void FillTheDataIn(string firstname,  string lastname,
-        string nickname,string middlename,
-        string title, string company, string address, string home, string mobile, string work,
-        string fax, string email, string email2, string email3, string homepage,
-        string bdate, string bmonth, string byear,
-        string adate, string amonth, string ayear,
-        string address2, string phone2, string notes)
+        private void FillTheDataIn(ContactData contact)
         {
            driver.FindElement(By.Name("firstname")).Click();
            driver.FindElement(By.Name("firstname")).Clear();
-           driver.FindElement(By.Name("firstname")).SendKeys(firstname);
+           driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
            driver.FindElement(By.Name("theform")).Click();
            driver.FindElement(By.Name("middlename")).Click();
            driver.FindElement(By.Name("middlename")).Clear();
-           driver.FindElement(By.Name("middlename")).SendKeys(middlename);
+           driver.FindElement(By.Name("middlename")).SendKeys(contact.Middlename);
            driver.FindElement(By.Name("lastname")).Click();
            driver.FindElement(By.Name("lastname")).Clear();
-           driver.FindElement(By.Name("lastname")).SendKeys(lastname);
+           driver.FindElement(By.Name("lastname")).SendKeys(contact.Lastname);
            driver.FindElement(By.Name("theform")).Click();
            driver.FindElement(By.Name("nickname")).Click();
            driver.FindElement(By.Name("nickname")).Clear();
-           driver.FindElement(By.Name("nickname")).SendKeys(nickname);
+           driver.FindElement(By.Name("nickname")).SendKeys(contact.Nickname);
            driver.FindElement(By.Name("title")).Click();
            driver.FindElement(By.Name("title")).Clear();
-           driver.FindElement(By.Name("title")).SendKeys(title);
+           driver.FindElement(By.Name("title")).SendKeys(contact.Title);
            driver.FindElement(By.Name("company")).Click();
            driver.FindElement(By.Name("company")).Clear();
-           driver.FindElement(By.Name("company")).SendKeys(company);
+           driver.FindElement(By.Name("company")).SendKeys(contact.Company);
            driver.FindElement(By.Name("address")).Click();
            driver.FindElement(By.Name("address")).Clear();
-           driver.FindElement(By.Name("address")).SendKeys(address);
+           driver.FindElement(By.Name("address")).SendKeys(contact.Address);
            driver.FindElement(By.Name("home")).Click();
            driver.FindElement(By.Name("home")).Clear();
-           driver.FindElement(By.Name("home")).SendKeys(home);
+           driver.FindElement(By.Name("home")).SendKeys(contact.Home);
            driver.FindElement(By.Name("mobile")).Click();
-           driver.FindElement(By.Name("mobile")).SendKeys(mobile);
+           driver.FindElement(By.Name("mobile")).SendKeys(contact.Mobile);
            driver.FindElement(By.Name("work")).Click();
            driver.FindElement(By.Name("work")).Clear();
-           driver.FindElement(By.Name("work")).SendKeys(work);
+           driver.FindElement(By.Name("work")).SendKeys(contact.Work);
            driver.FindElement(By.Name("theform")).Click();
            driver.FindElement(By.Name("fax")).Click();
            driver.FindElement(By.Name("fax")).Clear();
-           driver.FindElement(By.Name("fax")).SendKeys(fax);
+           driver.FindElement(By.Name("fax")).SendKeys(contact.Fax);
            driver.FindElement(By.Name("email")).Click();
            driver.FindElement(By.Name("email")).Clear();
-           driver.FindElement(By.Name("email")).SendKeys(email);
+           driver.FindElement(By.Name("email")).SendKeys(contact.Email);
            driver.FindElement(By.Name("email2")).Click();
            driver.FindElement(By.Name("email2")).Clear();
-           driver.FindElement(By.Name("email2")).SendKeys(email2);
+           driver.FindElement(By.Name("email2")).SendKeys(contact.Email2);
            driver.FindElement(By.Name("email3")).Click();
            driver.FindElement(By.Name("email3")).Clear();
-           driver.FindElement(By.Name("email3")).SendKeys(email2);
+           driver.FindElement(By.Name("email3")).SendKeys(contact.Email3);
            driver.FindElement(By.Name("homepage")).Click();
            driver.FindElement(By.Name("homepage")).Clear();
-           driver.FindElement(By.Name("homepage")).SendKeys(homepage);
+           driver.FindElement(By.Name("homepage")).SendKeys(contact.Homepage);
            driver.FindElement(By.Name("bday")).Click();
-           new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText("17");
+           new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[19]")).Click();
            driver.FindElement(By.Name("theform")).Click();
            driver.FindElement(By.Name("bmonth")).Click();
-           new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText("November");
+           new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[45]")).Click();
            driver.FindElement(By.Name("byear")).Click();
            driver.FindElement(By.Name("byear")).Clear();
-           driver.FindElement(By.Name("byear")).SendKeys(byear);
-           new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText("17");
+           driver.FindElement(By.Name("byear")).SendKeys(contact.Byear);
+           new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(contact.Aday);
            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[19]")).Click();
            driver.FindElement(By.Name("amonth")).Click();
-           new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText("October");
+           new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(contact.Amonth);
            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[44]")).Click();
            driver.FindElement(By.Name("ayear")).Click();
            driver.FindElement(By.Name("ayear")).Clear();
-           driver.FindElement(By.Name("ayear")).SendKeys(ayear);
+           driver.FindElement(By.Name("ayear")).SendKeys(contact.Ayear);
            driver.FindElement(By.Name("address2")).Click();
-           driver.FindElement(By.Name("address2")).Clear();
-           driver.FindElement(By.Name("address2")).SendKeys(address2);
+          driver.FindElement(By.Name("address2")).Clear();
+           driver.FindElement(By.Name("address2")).SendKeys(contact.Address2);
            driver.FindElement(By.Name("phone2")).Click();
            driver.FindElement(By.Name("phone2")).Clear();
-           driver.FindElement(By.Name("phone2")).SendKeys(phone2);
+           driver.FindElement(By.Name("phone2")).SendKeys(contact.Phone2);
            driver.FindElement(By.Name("notes")).Click();
            driver.FindElement(By.Name("notes")).Clear();
-           driver.FindElement(By.Name("notes")).SendKeys(notes);
+           driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);
         }
 
         private void AddNew()
