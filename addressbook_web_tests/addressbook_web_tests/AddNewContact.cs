@@ -43,7 +43,7 @@ namespace WebAddressbooktests
         public void AddNewContactTest()
         {
             GoToHomePage();
-            Login("admin", "secret");
+            Login(new AccountData ("admin", "secret"));
             AddNew();
             FillTheDataIn("Anna", "Chukreeva", "1", "2", "3", "4", "5", "6", "7", 
                 "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22");
@@ -156,14 +156,14 @@ namespace WebAddressbooktests
             driver.FindElement(By.LinkText("add new")).Click();
         }
 
-        private void Login(string username, string password)
+        private void Login(AccountData account)
         {
             driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys(username);
+            driver.FindElement(By.Name("user")).SendKeys(account.Username);
             driver.FindElement(By.Id("LoginForm")).Click();
             driver.FindElement(By.Name("pass")).Click();
             driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys(password);
+            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
             driver.FindElement(By.Id("LoginForm")).Click();
             driver.FindElement(By.Id("LoginForm")).Click();
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
