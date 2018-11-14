@@ -9,16 +9,42 @@ namespace WebAddressbooktests
     class ContactData
     {
         private string firstname;
-        private string lastname = " ";
+        private string lastname;
+        private string middlename = " ";
+        private string nickname = " ";
+        private string title = " ";
+        private string company = " ";
+        private string address = " ";
+        private string home = " ";
+        private string mobile = " ";
+        private string work = " ";
+        private string fax = " ";
+        private string email = " ";
+        private string email2 = " ";
+        private string email3 = " ";
+        private string homepage = " ";
+        private string bday = "1";
+        private string bmonth = " ";
+        private string byear = " ";
+        private string aday = " ";
+        private string amonth = " ";
+        private string ayear = " ";
+        private string address2 = " ";
+        private string phone2 = " ";
+        private string anotes = " ";
+
+        
         public ContactData(string firstname)
         {
             this.firstname = firstname;
-                  }
+        }
+
         public ContactData(string firstname, string lastname)
         {
             this.firstname = firstname;
             this.lastname = lastname;
         }
+
         public string Firstname
         {
             get
@@ -45,242 +71,242 @@ namespace WebAddressbooktests
         {
             get
             {
-                return Middlename;
+                return middlename;
             }
             set
             {
-                Middlename = value;
+                middlename = value;
             }
         }
         public string Nickname
         {
             get
             {
-                return Nickname;
+                return nickname;
             }
             set
             {
-                Nickname = value;
+                nickname = value;
             }
         }
         public string Title
         {
             get
             {
-                return Title;
+                return title;
             }
             set
             {
-                Title = value;
+                title = value;
             }
         }
         public string Company
         {
             get
             {
-                return Company;
+                return company;
             }
             set
             {
-                Company = value;
+                company = value;
             }
         }
         public string Address
         {
             get
             {
-                return Address;
+                return address;
             }
             set
             {
-                Address = value;
+                address = value;
             }
         }
         public string Home
         {
             get
             {
-                return Home;
+                return home;
             }
             set
             {
-                Home = value;
+                home = value;
             }
         }
         public string Mobile
         {
             get
             {
-                return Mobile;
+                return mobile;
             }
             set
             {
-                Mobile = value;
+                mobile = value;
             }
         }
         public string Work
         {
             get
             {
-                return Work;
+                return work;
             }
             set
             {
-                Work = value;
+                work = value;
             }
         }
         public string Fax
         {
             get
             {
-                return Fax;
+                return fax;
             }
             set
             {
-                Fax = value;
+                fax = value;
             }
         }
         public string Email
         {
             get
             {
-                return Email;
+                return email;
             }
             set
             {
-                Email = value;
+                email = value;
             }
         }
         public string Email2
         {
             get
             {
-                return Email2;
+                return email2;
             }
             set
             {
-                Email2 = value;
+                email2 = value;
             }
         }
         public string Email3
         {
             get
             {
-                return Email3;
+                return email3;
             }
             set
             {
-                Email3 = value;
+                email3 = value;
             }
         }
         public string Homepage
         {
             get
             {
-                return Homepage;
+                return homepage;
             }
             set
             {
-                Homepage = value;
+                homepage = value;
             }
         }
         public string Bday
         {
             get
             {
-                return Bday;
+                return bday;
             }
             set
             {
-                Bday = value;
+                bday = value;
             }
         }
         public string Bmonth
         {
             get
             {
-                return Bmonth;
+                return bmonth;
             }
             set
             {
-                Bmonth = value;
+                bmonth = value;
             }
         }
         public string Byear
         {
             get
             {
-                return Byear;
+                return byear;
             }
             set
             {
-                Byear = value;
+                byear = value;
             }
         }
         public string Aday
         {
             get
             {
-                return Aday;
+                return aday;
             }
             set
             {
-                Aday = value;
+                aday = value;
             }
         }
         public string Amonth
         {
             get
             {
-                return Amonth;
+                return amonth;
             }
             set
             {
-                Amonth = value;
+                amonth = value;
             }
         }
         public string Ayear
         {
             get
             {
-                return Ayear;
+                return ayear;
             }
             set
             {
-                Ayear = value;
+                ayear = value;
             }
         }
         public string Address2
         {
             get
             {
-                return Address2;
+                return address2;
             }
             set
             {
-                Address2 = value;
+                address2 = value;
             }
         }
         public string Phone2
         {
             get
             {
-                return Phone2;
+                return phone2;
             }
             set
             {
-                Phone2 = value;
+                phone2 = value;
             }
         }
-        public string Notes
+        public string Anotes
         {
             get
             {
-                return Notes;
+                return anotes;
             }
             set
             {
-                Notes = value;
+                anotes = value;
             }
         }
     }
