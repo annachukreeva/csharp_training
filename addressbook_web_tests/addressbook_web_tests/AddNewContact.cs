@@ -116,7 +116,7 @@ namespace WebAddressbooktests
            driver.FindElement(By.Name("homepage")).Clear();
            driver.FindElement(By.Name("homepage")).SendKeys(contact.Homepage);
            driver.FindElement(By.Name("bday")).Click();
-           new SelectElement(driver.FindElement(By.Name("bday"))).SelectByValue(contact.Bday);
+           new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[19]")).Click();
            driver.FindElement(By.Name("theform")).Click();
            driver.FindElement(By.Name("bmonth")).Click();
