@@ -22,27 +22,5 @@ namespace WebAddressbooktests
             DeleteGroup();
             ReturnToGroupPage();
         }
-
-      // private void ReturnToGroupPage()
-       // {
-         //   driver.FindElement(By.XPath("(//*[normalize-space(text()) and normalize-space(.)='Groups'])[1]/following::div[1]")).Click();
-         //   driver.FindElement(By.LinkText("group page")).Click();
-       // }
-
-      //  private void DeleteGroup()
-       // {
-        //    driver.FindElement(By.Name("delete")).Click();
-       // }
-
-       // private void SelectGroup(int index)
-        //{
-          // driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
-           //driver.FindElement(By.XPath("//input[@name='selected[]']")).Click();
-        //}
-
-       // private void GoToGroupsPage()
-       // {
-        //    driver.FindElement(By.LinkText("groups")).Click();
-       // }
         }
 }
