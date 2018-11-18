@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbooktests
 {
-  public class TestBase
+    class ApplicationManager
     {
         protected IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -19,31 +18,11 @@ namespace WebAddressbooktests
         protected NavigationHelper navigator;
         protected LoginHelper loginHelper;
         protected GroupHelper groupHelper;
-      
-        [SetUp]
-        public void SetupTest()
+        public ApplicationManager()
         {
-            driver = new FirefoxDriver();
-            baseURL = "http://localhost/addressbook";
-            verificationErrors = new StringBuilder();
             loginHelper = new LoginHelper(driver);
             navigator = new NavigationHelper(driver, baseURL);
             groupHelper = new GroupHelper(driver);
         }
-
-        [TearDown]
-        public void TeardownTest()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignore errors if unable to close the browser
-            }
-            Assert.AreEqual("", verificationErrors.ToString());
-        }
-     }
+    }
 }
-
