@@ -17,7 +17,6 @@ namespace WebAddressbooktests
         protected IWebDriver driver;
         protected StringBuilder verificationErrors;
         protected string baseURL;
-        private bool acceptNextAlert = true;
 
         [SetUp]
         public void SetupTest()
