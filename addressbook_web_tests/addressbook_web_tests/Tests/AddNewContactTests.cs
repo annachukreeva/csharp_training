@@ -12,15 +12,16 @@ namespace WebAddressbooktests
          [Test]
         public void AddNewContactTest()
         {
-            GoToHomePage();
-            Login(new AccountData ("admin", "secret"));
-            PressAddNewContact();
-            FillTheDataAddNewContact(new ContactData("Anna", "Chukreeva"));
-            SubmitAddNewContact();
-            ReturnToHomePage();
-            Logout();
+                 app.Contacts
+                .PressAddNewContact()
+                .FillTheDataAddNewContact(new ContactData("Anna", "Chukreeva"))
+                .SubmitAddNewContact();
+                 app.Navigator
+                .ReturnToHomePage()
+                .Logout();
+        }
         }
     }
-}          
+}         
           
    

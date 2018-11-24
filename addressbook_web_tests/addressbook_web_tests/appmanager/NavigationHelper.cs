@@ -11,21 +11,34 @@ namespace WebAddressbooktests
 {
     public class NavigationHelper : HelperBase
     {
-       // private IWebDriver driver;
+        // private IWebDriver driver;
         private string baseURL;
 
         public NavigationHelper(ApplicationManager manager, string baseURL)
             : base(manager)
         {
-                 this.baseURL = baseURL;
+            this.baseURL = baseURL;
         }
-            public void GoToHomePage()
-            {
-                driver.Navigate().GoToUrl(baseURL);
-            }
-            public void GoToGroupsPage()
-            {
-                driver.FindElement(By.LinkText("groups")).Click();
-            }
+        public NavigationHelper GoToHomePage()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+            return this;
+        }
+        public NavigationHelper GoToGroupsPage()
+        {
+            driver.FindElement(By.LinkText("groups")).Click();
+            return this;
+        }
+        public NavigationHelper Logout()
+        {
+            driver.FindElement(By.LinkText("Logout")).Click();
+            return this;
+        }
+
+        public NavigationHelper ReturnToHomePage()
+        {
+            driver.FindElement(By.LinkText("home")).Click();
+            return this;
         }
     }
+}

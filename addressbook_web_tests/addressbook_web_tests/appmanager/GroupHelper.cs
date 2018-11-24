@@ -36,9 +36,7 @@ namespace WebAddressbooktests
             ReturnToGroupPage();
             return this;
         }
-
-        
-
+             
         public GroupHelper Create(GroupData group)
         {
             manager.Navigator.GoToGroupsPage();

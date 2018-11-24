@@ -17,7 +17,7 @@ namespace WebAddressbooktests
             : base(manager)
         { 
             }
-        public void Login(AccountData account)
+        public LoginHelper Login(AccountData account)
         {
             driver.FindElement(By.Name("user")).Click();
             driver.FindElement(By.Name("user")).Clear();
@@ -27,6 +27,7 @@ namespace WebAddressbooktests
             driver.FindElement(By.Name("pass")).Clear();
             driver.FindElement(By.Name("pass")).SendKeys(account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
+            return this;
         }
     }
 }

@@ -12,11 +12,13 @@ namespace WebAddressbooktests
     public class ApplicationManager
     {
         protected IWebDriver driver;
-         protected string baseURL;
+        protected string baseURL;
 
         protected NavigationHelper navigator;
         protected LoginHelper loginHelper;
         protected GroupHelper groupHelper;
+        protected ContactHelper contactHelper;
+
         public ApplicationManager()
         {
             driver = new FirefoxDriver();
@@ -24,6 +26,7 @@ namespace WebAddressbooktests
             loginHelper = new LoginHelper(this);
             navigator = new NavigationHelper(this, baseURL);
             groupHelper = new GroupHelper(this);
+            contactHelper = new ContactHelper(this);
         }
 
         public IWebDriver Driver
@@ -67,7 +70,13 @@ namespace WebAddressbooktests
                 return groupHelper;
             }
         }
+        public ContactHelper Contacts
+        {
+            get
+            {
+                return contactHelper;
+            }
+        }
 
-       
     }
 }
