@@ -12,16 +12,21 @@ namespace WebAddressbooktests
          [Test]
         public void AddNewContactTest()
         {
-                 app.Contacts
-                .PressAddNewContact()
-                .FillTheDataAddNewContact(new ContactData("Anna", "Chukreeva"))
-                .SubmitAddNewContact();
-                 app.Navigator
-                .ReturnToHomePage()
-                .Logout();
-        }
-        }
+                ContactData contact = new ContactData("Anna");
+                contact.Lastname = "Chukreeva";
+
+               app.Contacts.CreateContact(contact);
+           }
+
+        [Test]
+        public void EmptyAddNewContactTest()
+        {
+            ContactData contact = new ContactData(" ");
+            contact.Lastname = " ";
+
+            app.Contacts.CreateContact(contact);
+         }
     }
-}         
+ }       
           
    

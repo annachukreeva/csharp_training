@@ -60,6 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="appmanager\ContactHelper.cs" />
+    <Compile Include="ContactModificationTests.cs" />
+    <Compile Include="ContactRemovalTests.cs" />
+    <Compile Include="Tests\GroupModificationTests.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="appmanager\ApplicationManager.cs" />
     <Compile Include="Circle.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="Tests\AddNewContactTests.cs" />
     <Compile Include="Tests\GroupCreationTests.cs" />
     <Compile Include="Tests\GroupRemovalTests.cs" />
+    <Compile Include="UnitTest2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

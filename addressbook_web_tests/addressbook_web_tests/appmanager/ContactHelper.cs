@@ -17,11 +17,12 @@ namespace WebAddressbooktests
             : base(manager)
         { 
         }
-        public ContactHelper Create(ContactData contact)
+        public ContactHelper CreateContact(ContactData contact)
         {
            PressAddNewContact();
-           FillTheDataAddNewContact(new ContactData(" ", " "));
+           FillTheDataAddNewContact(contact);
            SubmitAddNewContact();
+           manager.Navigator.ReturnToHomePage();
            return this;
         }
         public ContactHelper SubmitAddNewContact()

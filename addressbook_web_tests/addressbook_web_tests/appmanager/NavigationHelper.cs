@@ -11,7 +11,6 @@ namespace WebAddressbooktests
 {
     public class NavigationHelper : HelperBase
     {
-        // private IWebDriver driver;
         private string baseURL;
 
         public NavigationHelper(ApplicationManager manager, string baseURL)
@@ -29,11 +28,11 @@ namespace WebAddressbooktests
             driver.FindElement(By.LinkText("groups")).Click();
             return this;
         }
-        public NavigationHelper Logout()
-        {
-            driver.FindElement(By.LinkText("Logout")).Click();
-            return this;
-        }
+       // public NavigationHelper Logout()
+        //{
+          //  driver.FindElement(By.LinkText("Logout")).Click();
+          //  return this;
+      //  }
 
         public NavigationHelper ReturnToHomePage()
         {
