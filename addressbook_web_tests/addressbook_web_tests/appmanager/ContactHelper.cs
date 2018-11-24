@@ -13,6 +13,8 @@ namespace WebAddressbooktests
 {
   public class ContactHelper : HelperBase
     {
+        public bool acceptNextAlert { get; private set; }
+
         public ContactHelper(ApplicationManager manager)
             : base(manager)
         { 
@@ -24,6 +26,34 @@ namespace WebAddressbooktests
            SubmitAddNewContact();
            manager.Navigator.ReturnToHomePage();
            return this;
+        }
+
+        public ContactHelper Modify(int v, ContactData newData)
+        {
+            manager.Navigator.ReturnToHomePage();
+            SelectContact();
+            PressEdit();
+            FillTheDataAddNewContact(newData);
+            ConfirmContactModification();
+            return this;
+        }
+             
+        public ContactHelper ConfirmContactModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
+        public ContactHelper SelectContact()
+        {
+            driver.FindElement(By.Id("16")).Click();
+            return this;
+        }
+
+        public ContactHelper PressEdit()
+        {
+            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+            return this;
         }
         public ContactHelper SubmitAddNewContact()
         {

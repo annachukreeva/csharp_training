@@ -43,7 +43,7 @@ namespace SeleniumTests
         public void TheContactRemovalTestsTest()
         {
             driver.Navigate().GoToUrl("http://localhost/addressbook/");
-            driver.FindElement(By.Id("15")).Click();
+            driver.FindElement(By.Id("+ index +")).Click();
             acceptNextAlert = true;
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
