@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 namespace addressbook_web_tests
 {
     class Figure
-            {
+    {
         private bool Colored = false;
         public bool colored
         {
             get
             {
-                return colored;
+                return Colored;
             }
             set
             {
-                colored = value;
+                Colored = value;
             }
         }
     }

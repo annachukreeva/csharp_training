@@ -31,30 +31,35 @@ namespace WebAddressbooktests
         public ContactHelper Modify(int v, ContactData newData)
         {
             manager.Navigator.ReturnToHomePage();
-            SelectContact();
-            PressEdit();
+
+            SelectContact(v);
+            InitContactModification();
             FillTheDataAddNewContact(newData);
             ConfirmContactModification();
             return this;
         }
-             
+
+        public ContactHelper SelectContact(int v)
+        {
+            driver.FindElement(By.Id( v.ToString() )).Click();
+           // XPath("(//input[@name='selected[]'])[" + v + "]")) ;
+            return this;
+        }
+
+        public ContactHelper InitContactModification()
+        {
+            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+            // driver.FindElement(By.Name("Edit")).Click();
+           // driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + " ]")).Click();
+           // driver.FindElement(By.XPath("//a[@href='edit.php?id=" + index + "']")).Click();
+            return this;                       
+        }
         public ContactHelper ConfirmContactModification()
         {
             driver.FindElement(By.Name("update")).Click();
             return this;
-        }
-
-        public ContactHelper SelectContact()
-        {
-            driver.FindElement(By.Id("16")).Click();
-            return this;
-        }
-
-        public ContactHelper PressEdit()
-        {
-            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
-            return this;
-        }
+        }          
+               
         public ContactHelper SubmitAddNewContact()
         {
             driver.FindElement(By.Name("submit")).Click();
@@ -66,14 +71,14 @@ namespace WebAddressbooktests
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
             driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
-            driver.FindElement(By.Name("theform")).Click();
+           // driver.FindElement(By.Name("theform")).Click();
             driver.FindElement(By.Name("middlename")).Click();
             driver.FindElement(By.Name("middlename")).Clear();
             driver.FindElement(By.Name("middlename")).SendKeys(contact.Middlename);
             driver.FindElement(By.Name("lastname")).Click();
             driver.FindElement(By.Name("lastname")).Clear();
             driver.FindElement(By.Name("lastname")).SendKeys(contact.Lastname);
-            driver.FindElement(By.Name("theform")).Click();
+          //  driver.FindElement(By.Name("theform")).Click();
             driver.FindElement(By.Name("nickname")).Click();
             driver.FindElement(By.Name("nickname")).Clear();
             driver.FindElement(By.Name("nickname")).SendKeys(contact.Nickname);
@@ -94,7 +99,7 @@ namespace WebAddressbooktests
             driver.FindElement(By.Name("work")).Click();
             driver.FindElement(By.Name("work")).Clear();
             driver.FindElement(By.Name("work")).SendKeys(contact.Work);
-            driver.FindElement(By.Name("theform")).Click();
+          //  driver.FindElement(By.Name("theform")).Click();
             driver.FindElement(By.Name("fax")).Click();
             driver.FindElement(By.Name("fax")).Clear();
             driver.FindElement(By.Name("fax")).SendKeys(contact.Fax);
@@ -113,7 +118,7 @@ namespace WebAddressbooktests
             driver.FindElement(By.Name("bday")).Click();
             new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
             driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[19]")).Click();
-            driver.FindElement(By.Name("theform")).Click();
+         //   driver.FindElement(By.Name("theform")).Click();
             driver.FindElement(By.Name("bmonth")).Click();
             new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
             driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[45]")).Click();
@@ -143,6 +148,27 @@ namespace WebAddressbooktests
         public ContactHelper PressAddNewContact()
         {
             driver.FindElement(By.LinkText("add new")).Click();
+            return this;
+        }
+
+        public ContactHelper Remove( int v )
+        {
+            manager.Navigator.ReturnToHomePage();
+            SelectContact(v);
+            InitRemovalContact();
+            ConfirmRemovalContact();
+            return this;
+        }
+
+        public ContactHelper ConfirmRemovalContact()
+        {
+            driver.SwitchTo().Alert().Accept();
+            return this;
+        }
+
+        public ContactHelper InitRemovalContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             return this;
         }
     }
