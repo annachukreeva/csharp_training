@@ -13,16 +13,17 @@ namespace WebAddressbooktests
         [SetUp]
         public void SetupTest()
         {
-            app = new ApplicationManager();
-            app.Navigator.GoToHomePage();
-            app.Auth.Login(new AccountData("admin", "secret"));
+            //app = new ApplicationManager();
+            app = TestSuiteFixture.app;
+            //app.Navigator.GoToHomePage();
+            //app.Auth.Login(new AccountData("admin", "secret"));
         }
 
-        [TearDown]
-        public void TeardownTest()
-        {
-            app.Stop();
-        }      
+       // [TearDown]
+       // public void TeardownTest()
+       // {
+            //app.Stop();
+      //  }      
      }
    }
 
