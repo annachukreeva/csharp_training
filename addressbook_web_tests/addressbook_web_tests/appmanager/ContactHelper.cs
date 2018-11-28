@@ -32,7 +32,7 @@ namespace WebAddressbooktests
         {
             manager.Navigator.ReturnToHomePage();
 
-            SelectContact(v);
+           // SelectContact(v);
             InitContactModification();
             FillTheDataAddNewContact(newData);
             ConfirmContactModification();
@@ -41,10 +41,10 @@ namespace WebAddressbooktests
 
         public ContactHelper SelectContact(int v)
         {
-            driver.FindElement(By.Id( v.ToString() )).Click();
-           // XPath("(//input[@name='selected[]'])[" + v + "]")) ;
-            return this;
-        }
+           driver.FindElement(By.Id( v.ToString() )).Click();
+          // XPath("(//input[@name='selected[]'])[" + v + "]")) ;
+           return this;
+       }
 
         public ContactHelper InitContactModification()
         {
