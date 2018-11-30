@@ -23,16 +23,16 @@ namespace WebAddressbooktests
             driver.Navigate().GoToUrl(baseURL);
             return this;
         }
-        public NavigationHelper GoToGroupsPage()
+        public void GoToGroupsPage()
         {
             driver.FindElement(By.LinkText("groups")).Click();
-            return this;
+           
         }
-       // public NavigationHelper Logout()
-        //{
-          //  driver.FindElement(By.LinkText("Logout")).Click();
-          //  return this;
-      //  }
+       //public NavigationHelper Logout()
+       // {
+         // driver.FindElement(By.LinkText("Logout")).Click();
+         //  return this;
+      // }
 
         public NavigationHelper ReturnToHomePage()
         {
