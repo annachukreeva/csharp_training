@@ -18,16 +18,24 @@ namespace WebAddressbooktests
         {
             this.baseURL = baseURL;
         }
-        public NavigationHelper GoToHomePage()
+        public void GoToHomePage()
         {
-            driver.Navigate().GoToUrl(baseURL);
-            return this;
-        }
+            if (driver.Url == baseURL + "/addressbook/")
+            {
+                return;
+            }
+            driver.Navigate().GoToUrl(baseURL + "/addressbook/");
+         }
+
         public void GoToGroupsPage()
         {
+            if (driver.Url == baseURL + "/addressbook/group.php"
+                && IsElementPresent(By.Name("new")))
+            {
+                return;
+            }
             driver.FindElement(By.LinkText("groups")).Click();
-           
-        }
+         }
        //public NavigationHelper Logout()
        // {
          // driver.FindElement(By.LinkText("Logout")).Click();
@@ -39,5 +47,11 @@ namespace WebAddressbooktests
             driver.FindElement(By.LinkText("home")).Click();
             return this;
         }
+
+        public void ReturnToGroupPage()
+        {
+            driver.FindElement(By.LinkText("group page")).Click();
+            driver.FindElement(By.LinkText("Logout")).Click();
+         }
     }
 }
