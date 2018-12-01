@@ -42,16 +42,17 @@ namespace WebAddressbooktests
          //  return this;
       // }
 
-        public NavigationHelper ReturnToHomePage()
-        {
-            driver.FindElement(By.LinkText("home")).Click();
-            return this;
-        }
+       // public NavigationHelper GoToHomePage()
+       // {
+
+         //   driver.FindElement(By.LinkText("home")).Click();
+          //  return this;
+       // }
 
         public void ReturnToGroupPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();
-            driver.FindElement(By.LinkText("Logout")).Click();
+           // driver.FindElement(By.LinkText("Logout")).Click();
          }
     }
 }
