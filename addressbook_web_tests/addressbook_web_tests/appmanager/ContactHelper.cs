@@ -36,7 +36,8 @@ namespace WebAddressbooktests
            return this;
         }
 
-        public ContactHelper Modify(int v, ContactData newData)
+        public ContactHelper Modify(ContactData newData)
+       // public ContactHelper Modify(int v, ContactData newData)
         {
             manager.Navigator.GoToHomePage();
 
@@ -48,9 +49,9 @@ namespace WebAddressbooktests
 
         public ContactHelper SelectContact(int v)
         {
-           driver.FindElement(By.Id( v.ToString() )).Click();
-           return this;
-       }
+         driver.FindElement(By.Id( v.ToString() )).Click();
+         return this;
+      }
 
         public ContactHelper InitContactModification()
         {
