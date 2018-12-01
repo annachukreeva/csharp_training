@@ -10,6 +10,7 @@ namespace WebAddressbooktests
   public class ContactModificationTests : AuthTestBase
     {
 
+
         [Test]
         public void ContactModificationTest()
         {
