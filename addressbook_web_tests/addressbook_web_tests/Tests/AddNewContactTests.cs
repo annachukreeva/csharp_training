@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace WebAddressbooktests
@@ -9,14 +10,19 @@ namespace WebAddressbooktests
     [TestFixture]
     public class AddNewContactsTests : AuthTestBase
     {
-         [Test]
+        [Test]
         public void AddNewContactTest()
         {
-                ContactData contact = new ContactData("Anna");
-                contact.Lastname = "Chukreeva";
+            ContactData contact = new ContactData("Anna");
+            contact.Lastname = "Chukreeva";
 
-               app.Contacts.CreateContact(contact);
-           }
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
+
+            app.Contacts.CreateContact(contact);
+
+            List<ContactData> newContacts = app.Contacts.GetContactList();
+            Assert.AreEqual(oldContacts.Count + 1, newContacts.Count);
+        }
 
         [Test]
         public void EmptyAddNewContactTest()
@@ -24,9 +30,14 @@ namespace WebAddressbooktests
             ContactData contact = new ContactData(" ");
             contact.Lastname = " ";
 
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
+
             app.Contacts.CreateContact(contact);
-         }
+
+            List<ContactData> newContacts = app.Contacts.GetContactList();
+            Assert.AreEqual(oldContacts.Count + 1, newContacts.Count);
+        }
     }
- }       
+}
           
    
