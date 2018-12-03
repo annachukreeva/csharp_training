@@ -26,13 +26,22 @@ namespace WebAddressbooktests
             List<ContactData> contacts = new List<ContactData>();
 
             manager.Navigator.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name='entry']"));
+           //ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name='entry']"));
+            ICollection<IWebElement> elements = driver.FindElements(By.XPath(".//td[1]"));
             foreach (IWebElement element in elements)
             {
                 contacts.Add(new ContactData(element.Text));
             }
 
             return contacts;
+        }
+
+        public ContactHelper SelectContact(int index)
+        {
+          // driver.FindElement(By.CssSelector("tr[name='entry'][" + (index + 1) + "]")).Click();
+           driver.FindElement(By.XPath(".//td[1]")).Click();
+            //driver.FindElement(By.Id( v.ToString() )).Click();
+            return this;
         }
 
         public bool acceptNextAlert { get; private set; }
@@ -61,11 +70,7 @@ namespace WebAddressbooktests
             return this;
         }
 
-        public ContactHelper SelectContact(int v)
-        {
-         driver.FindElement(By.Id( v.ToString() )).Click();
-         return this;
-      }
+       
 
         public ContactHelper InitContactModification()
         {
@@ -127,10 +132,10 @@ namespace WebAddressbooktests
             driver.FindElement(By.LinkText("add new")).Click();
         }
 
-        public ContactHelper Remove( int v )
+        public ContactHelper Remove( int index )
         {
             manager.Navigator.GoToHomePage();
-            SelectContact(v);
+            SelectContact(index);
             InitRemovalContact();
             ConfirmRemovalContact();
             return this;
