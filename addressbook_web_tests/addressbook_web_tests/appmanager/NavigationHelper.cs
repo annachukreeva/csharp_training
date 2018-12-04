@@ -36,23 +36,11 @@ namespace WebAddressbooktests
             }
             driver.FindElement(By.LinkText("groups")).Click();
          }
-       //public NavigationHelper Logout()
-       // {
-         // driver.FindElement(By.LinkText("Logout")).Click();
-         //  return this;
-      // }
-
-       // public NavigationHelper GoToHomePage()
-       // {
-
-         //   driver.FindElement(By.LinkText("home")).Click();
-          //  return this;
-       // }
 
         public void ReturnToGroupPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();
-           // driver.FindElement(By.LinkText("Logout")).Click();
+         
          }
     }
 }
