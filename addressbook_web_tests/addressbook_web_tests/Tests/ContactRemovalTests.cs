@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Collections.Generic;
 using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace WebAddressbooktests
 {
@@ -12,6 +13,12 @@ namespace WebAddressbooktests
         [Test]
         public void DeleteContactTest()
         {
+            app.Navigator.GoToHomePage();
+            if (!app.Contacts.IsElementPresent(By.CssSelector("tr[name='entry']")))
+            {
+                ContactData contact = new ContactData("Ivan", "Ivanov");
+                app.Contacts.CreateContact(contact);
+            }
 
             List<ContactData> oldContacts = app.Contacts.GetContactList();
 

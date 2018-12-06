@@ -35,6 +35,7 @@ namespace WebAddressbooktests
             {
                 groups.Add(new GroupData(element.Text));
              }
+
             return groups;
         }
 
@@ -48,7 +49,9 @@ namespace WebAddressbooktests
             manager.Navigator.ReturnToGroupPage();
             return this;
         }
-             
+
+     
+
         public GroupHelper Create(GroupData group)
         {
             manager.Navigator.GoToGroupsPage();
@@ -58,11 +61,13 @@ namespace WebAddressbooktests
             manager.Navigator.ReturnToGroupPage();
             return this;
         }
-            public GroupHelper InitNewGroupCreation()
+
+        public GroupHelper InitNewGroupCreation()
         {
             driver.FindElement(By.Name("new")).Click();
             return this;
         }
+
         public GroupHelper FillGroupFormin(GroupData group)
         {
             Type(By.Name("group_name"), group.Name);

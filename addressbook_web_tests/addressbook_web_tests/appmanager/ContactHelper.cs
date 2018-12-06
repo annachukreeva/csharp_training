@@ -30,6 +30,7 @@ namespace WebAddressbooktests
            // ICollection<IWebElement> elements = driver.FindElements(By.XPath(".//td[1]"));
             foreach (IWebElement element in elements)
             {
+                //element.FindElement(By.Name("td"))
                 contacts.Add(new ContactData(element.Text));
             }
 
