@@ -8,7 +8,7 @@ using OpenQA.Selenium;
 
 namespace WebAddressbooktests
 {
-  public class ContactModificationTests : AuthTestBase
+    public class ContactModificationTests : AuthTestBase
     {
         [Test]
         public void ContactModificationTest()
@@ -24,7 +24,16 @@ namespace WebAddressbooktests
 
             ContactData newData = new ContactData("Ivan");
             newData.Lastname = "Ivanov";
+
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
+
             app.Contacts.Modify(newData);
-          }
+
+            List<ContactData> newContacts = app.Contacts.GetContactList();
+            oldContacts[0].Firstname = newData.Firstname;
+            oldContacts.Sort();
+            newContacts.Sort();
+            Assert.AreEqual(oldContacts, newContacts);
+        }
     }
 }
