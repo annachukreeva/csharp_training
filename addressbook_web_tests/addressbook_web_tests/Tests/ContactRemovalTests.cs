@@ -24,6 +24,8 @@ namespace WebAddressbooktests
 
             app.Contacts.Remove(0);
 
+        
+
             List<ContactData> newContacts = app.Contacts.GetContactList();
 
             oldContacts.RemoveAt(0);
