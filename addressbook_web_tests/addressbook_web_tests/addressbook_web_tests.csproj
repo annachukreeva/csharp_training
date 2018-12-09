@@ -68,7 +68,6 @@
     <Compile Include="appmanager\ApplicationManager.cs" />
     <Compile Include="Circle.cs" />
     <Compile Include="model\ContactData.cs" />
-    <Compile Include="Contact_Data.cs" />
     <Compile Include="Figure.cs" />
     <Compile Include="model\GroupData.cs" />
     <Compile Include="appmanager\GroupHelper.cs" />

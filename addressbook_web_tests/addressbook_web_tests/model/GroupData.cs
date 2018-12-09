@@ -16,7 +16,7 @@ namespace WebAddressbooktests
             this.name = name; 
         }
 
-        public bool Equals(GroupData other)
+        public  bool Equals(GroupData other)
         {
             if (Object.ReferenceEquals(other, null))
             {
@@ -30,24 +30,22 @@ namespace WebAddressbooktests
             return Name == other.Name;
         }
 
-        public override int GetHashCode()
-        
+        public override int GetHashCode()  
         {
             return Name.GetHashCode();
         }
 
         public override string ToString()
-            {
+        {
             return "name=" + Name;
         }
 
         public int CompareTo(GroupData other)
         {
             if (Object.ReferenceEquals(other, null))
-                
-                {
+            {
                 return 1;
-              }
+            }
             return Name.CompareTo(other.Name);
         }
 

@@ -30,8 +30,8 @@ namespace WebAddressbooktests
         [Test]
         public void EmptyAddNewContactTest()
         {
-            ContactData contact = new ContactData(" ");
-            contact.Lastname = " ";
+            ContactData contact = new ContactData("");
+            contact.Lastname = "";
 
             List<ContactData> oldContacts = app.Contacts.GetContactList();
 

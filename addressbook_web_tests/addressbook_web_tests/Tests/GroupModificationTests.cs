@@ -17,12 +17,12 @@ namespace WebAddressbooktests
             GroupData newData = new GroupData("zzz");
             newData.Header = null;
             newData.Footer = null;
-          app.Navigator.GoToGroupsPage();
-          if (!app.Groups.IsElementPresent(By.Name("selected[]")))
-          {
-          GroupData group = new GroupData(" ");
-          app.Groups.Create(group);
-          }
+            app.Navigator.GoToGroupsPage();
+            if (!app.Groups.IsElementPresent(By.Name("selected[]")))
+            {
+                GroupData group = new GroupData(" ");
+                app.Groups.Create(group);
+            }
 
             List<GroupData> oldGroups = app.Groups.GetGroupList();
 
