@@ -44,6 +44,21 @@ namespace WebAddressbooktests
             return new List<ContactData>(contactCache);
         }
 
+        internal ContactData GetDetailedContactInformationFromDetailedForm()
+        {
+            manager.Navigator.GoToHomePage();
+            InitContactDetails();
+
+        }
+
+        public ContactHelper InitContactDetails()
+        
+         {
+                driver.FindElement(By.XPath("//img[@alt='Details']")).Click();
+                return this;
+         }
+    
+
         public int GetContactCount()
         {
             return driver.FindElements(By.CssSelector("tr[name='entry']")).Count;

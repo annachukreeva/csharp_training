@@ -9,21 +9,32 @@ namespace WebAddressbooktests
 {
     [TestFixture]
 
-    public class ContactInformationalTests: AuthTestBase
+    public class ContactInformationalTests : AuthTestBase
     {
         [Test]
 
-        public void TestContactInfornation()
-         {
-          ContactData fromTable = app.Contacts.GetContactInformationFromTable(0);
-          ContactData fromForm = app.Contacts.GetContactInformationFromEditTForm(0);
+        public void TestContactInformation()
+        {
+            ContactData fromTable = app.Contacts.GetContactInformationFromTable(0);
+            ContactData fromForm = app.Contacts.GetContactInformationFromEditTForm(0);
 
-            //verifocation
+            //verification
 
             Assert.AreEqual(fromTable, fromForm);
             Assert.AreEqual(fromTable.Address, fromForm.Address);
             Assert.AreEqual(fromTable.AllPhones, fromForm.AllPhones);
+            Assert.AreEqual(fromTable.AllEmail, fromForm.AllEmail);
+        }
+
+        [Test]
+
+        public void DetailedContactImformation()
+        {
+            ContactData fromDetailedForm = app.Contacts.GetDetailedContactInformationFromDetailedForm();
+            ContactData fromForm = app.Contacts.GetContactInformationFromEditTForm(0);
+
+            //verification
         }
     }
-
 }
+
