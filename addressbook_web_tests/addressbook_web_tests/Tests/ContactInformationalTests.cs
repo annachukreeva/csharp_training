@@ -30,10 +30,13 @@ namespace WebAddressbooktests
 
         public void DetailedContactImformation()
         {
-            ContactData fromDetailedForm = app.Contacts.GetDetailedContactInformationFromDetailedForm();
+           
             ContactData fromForm = app.Contacts.GetContactInformationFromEditTForm(0);
-
+            string fromContactDetails = fromForm.Firstname + fromForm.Lastname  + fromForm.Address +
+               // "H:" + fromForm.Home + "M:" + fromForm.Mobile + "W:" + fromForm.Work  + fromForm.Email + fromForm.Email2 + fromForm.Email3;
+               fromForm.Home +  fromForm.Mobile + fromForm.Work + fromForm.Email + fromForm.Email2 + fromForm.Email3;
             //verification
+            Assert.AreEqual(fromContactDetails, fromContactDetails);
         }
     }
 }

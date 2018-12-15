@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace WebAddressbooktests
 {
@@ -11,6 +12,9 @@ namespace WebAddressbooktests
        
         private string allPhones;
         private string allEmail;
+        private string details;
+
+
 
 
         public ContactData(string firstname)
@@ -64,7 +68,6 @@ namespace WebAddressbooktests
             else
             {
                 return Lastname.CompareTo(other.Lastname);
-
             }
         }
 
@@ -114,6 +117,7 @@ namespace WebAddressbooktests
         public string Address2 { get; set; }
         
         public string Phone2 { get; set; }
+        
 
         public string AllPhones
         {
@@ -140,7 +144,7 @@ namespace WebAddressbooktests
             {
                 return "";
             }
-           return phone.Replace(" ", ""). Replace("-", ""). Replace("(", "").Replace(")", "") + "\r\n";
+            return Regex.Replace(phone, "[ -()", "") + "\r\n";
         }
 
         public string AllEmail { 
@@ -163,6 +167,34 @@ namespace WebAddressbooktests
 
 
         public string Anotes { get; set; }
-      
+
+        public string Details
+        {
+            get
+            {
+                if (details != null)
+                {
+                    return details;
+                }
+                else
+                {
+                    return Firstname + Lastname + Address +
+                    // "H:" + Home + "M:" + Mobile + "W:" + Work + Email + Email2 + Email3;
+                    Home + Mobile + Work + Email + Email2 + Email3;
+                }
+            }
+            set
+            {
+                details= value;
+            }
+        }
+        public string CleanUp1(string details)
+        {
+            if (details == null || details == "")
+            {
+                return "";
+            }
+            return details.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
+        }
     }
-    }
+}

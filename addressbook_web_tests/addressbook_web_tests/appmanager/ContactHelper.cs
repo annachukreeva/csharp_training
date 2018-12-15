@@ -7,6 +7,8 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using System.Text.RegularExpressions;
+
 
 
 namespace WebAddressbooktests
@@ -44,14 +46,15 @@ namespace WebAddressbooktests
             return new List<ContactData>(contactCache);
         }
 
-        internal ContactData GetDetailedContactInformationFromDetailedForm()
+        public string GetContactInformationFromDetails( int index)
         {
             manager.Navigator.GoToHomePage();
-            InitContactDetails();
-
+            InitContactDetails(0);
+            string details = driver.FindElement(By.Id("content")).Text;
+            return details ;
         }
 
-        public ContactHelper InitContactDetails()
+        public ContactHelper InitContactDetails(int index)
         
          {
                 driver.FindElement(By.XPath("//img[@alt='Details']")).Click();
@@ -186,7 +189,7 @@ namespace WebAddressbooktests
             return this;
         }
 
-        internal ContactData GetContactInformationFromEditTForm(int index)
+       public ContactData GetContactInformationFromEditTForm(int index)
         {
             manager.Navigator.GoToHomePage();
 
@@ -244,6 +247,16 @@ namespace WebAddressbooktests
                 AllEmail = allEmail,
             };
 
+            }
+
+            public int GetNumberOfSerachResults()
+            {
+            manager.Navigator.GoToHomePage();
+            string text = driver.FindElement(By.TagName("label")).Text;
+            Match m = new Regex(@"\d+").Match(text);
+            return Int32.Parse(m.Value);
+            }
+
         }
     }
- }
+
