@@ -9,17 +9,13 @@ namespace WebAddressbooktests
 {
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
-       
         private string allPhones;
         private string allEmail;
         private string details;
 
-
-
-
         public ContactData(string firstname)
-       {
-           Firstname = firstname;
+        {
+            Firstname = firstname;
         }
 
         public ContactData(string firstname, string lastname)
@@ -53,8 +49,8 @@ namespace WebAddressbooktests
         {
             return "Firstname = " + Firstname + "; Lastname = " + Lastname;
         }
-       
-  
+
+
         public int CompareTo(ContactData other)
         {
             if (Object.ReferenceEquals(other, null))
@@ -72,52 +68,52 @@ namespace WebAddressbooktests
         }
 
 
-        public string Firstname { get; set; }    
-        
+        public string Firstname { get; set; }
+
         public string Lastname { get; set; }
-     
+
         public string Middlename { get; set; }
-        
+
         public string Nickname { get; set; }
-       
+
         public string Title { get; set; }
-       
+
         public string Company { get; set; }
-       
+
         public string Address { get; set; }
-       
+
         public string Home { get; set; }
-        
+
         public string Mobile { get; set; }
-       
-        public string Work{ get; set; }
-      
+
+        public string Work { get; set; }
+
         public string Fax { get; set; }
-       
+
         public string Email { get; set; }
-       
+
         public string Email2 { get; set; }
-       
+
         public string Email3 { get; set; }
-        
+
         public string Homepage { get; set; }
-        
+
         public string Bday { get; set; }
-        
+
         public string Bmonth { get; set; }
-        
+
         public string Byear { get; set; }
-        
+
         public string Aday { get; set; }
-       
+
         public string Amonth { get; set; }
-       
+
         public string Ayear { get; set; }
-       
+
         public string Address2 { get; set; }
-        
+
         public string Phone2 { get; set; }
-        
+
 
         public string AllPhones
         {
@@ -144,26 +140,27 @@ namespace WebAddressbooktests
             {
                 return "";
             }
-            return Regex.Replace(phone, "[ -()", "") + "\r\n";
+            return phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
         }
 
-        public string AllEmail { 
-                get
+        public string AllEmail
+        {
+            get
             {
-                    if (allEmail != null)
-                    {
-                        return allEmail;
-                    }
-                    else
-                    {
-                        return Email + Email2 + Email3;
-                    }
+                if (allEmail != null)
+                {
+                    return allEmail;
                 }
-                set
-            {
-                    allEmail = value;
+                else
+                {
+                    return Email + Email2 + Email3;
                 }
             }
+            set
+            {
+                allEmail = value;
+            }
+        }
 
 
         public string Anotes { get; set; }
@@ -178,14 +175,12 @@ namespace WebAddressbooktests
                 }
                 else
                 {
-                    return Firstname + Lastname + Address +
-                    // "H:" + Home + "M:" + Mobile + "W:" + Work + Email + Email2 + Email3;
-                    Home + Mobile + Work + Email + Email2 + Email3;
+                    return Firstname + Lastname + Address + Home + Mobile + Work + Email + Email2 + Email3;
                 }
             }
             set
             {
-                details= value;
+                details = value;
             }
         }
         public string CleanUp1(string details)
@@ -194,7 +189,7 @@ namespace WebAddressbooktests
             {
                 return "";
             }
-            return details.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
+            return Regex.Replace(details, "[ -()", "") + "\r\n";
         }
     }
 }
