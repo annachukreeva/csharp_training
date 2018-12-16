@@ -162,6 +162,14 @@ namespace WebAddressbooktests
             }
         }
 
+      //  private string CleanUp3(string email)
+        //{
+        //    if (email == null || email == "")
+        //    {
+        //        return "";
+         //   }
+        //   return email.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
+      //  }
 
         public string Anotes { get; set; }
 

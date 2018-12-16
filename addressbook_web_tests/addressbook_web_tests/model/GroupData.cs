@@ -32,11 +32,16 @@ namespace WebAddressbooktests
             return Name.GetHashCode();
         }
 
+       // public override string ToString()
+       // {
+        //    return "name=" + Name;
+       // }
+
+
         public override string ToString()
         {
-            return "name=" + Name;
+            return "name=" + Name + "\nheader= " + Header + "\nfooter=" + Footer;
         }
-
         public int CompareTo(GroupData other)
         {
             if (Object.ReferenceEquals(other, null))
