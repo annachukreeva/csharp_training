@@ -153,7 +153,7 @@ namespace WebAddressbooktests
                 }
                 else
                 {
-                    return Email + Email2 + Email3;
+                    return Email + "\r\n"+ Email2 + "\r\n" + Email3;
                 }
             }
             set
@@ -162,14 +162,14 @@ namespace WebAddressbooktests
             }
         }
 
-      //  private string CleanUp3(string email)
-        //{
-        //    if (email == null || email == "")
-        //    {
-        //        return "";
-         //   }
-        //   return email.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
-      //  }
+       //private string CleanUp3(string email)
+      // {
+           // if (email == null || email == "")
+          //  {
+          //      return "";
+          //  }
+          //  return email.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
+      //}
 
         public string Anotes { get; set; }
 
