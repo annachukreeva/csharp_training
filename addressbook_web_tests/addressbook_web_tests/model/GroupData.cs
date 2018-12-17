@@ -8,7 +8,12 @@ namespace WebAddressbooktests
 {
    public class GroupData : IEquatable<GroupData>, IComparable<GroupData>
     {
-         public GroupData (string name)
+        public GroupData()
+        {
+          
+        }
+
+        public GroupData (string name)
         {
             Name = name; 
         }
