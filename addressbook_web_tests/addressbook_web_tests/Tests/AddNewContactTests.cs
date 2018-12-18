@@ -21,8 +21,8 @@ namespace WebAddressbooktests
             {
                 contacts.Add(new ContactData(GenerateRandomString(30))
                 {
-                    Firstname = GenerateRandomString(100),
                     Lastname = GenerateRandomString(100),
+                    Middlename = GenerateRandomString(100),
                 });
             }
             return contacts;
