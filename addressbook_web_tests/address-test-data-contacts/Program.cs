@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
+using Excel = Microsoft.Office.Interop.Excel;
 using WebAddressbooktests;
 
 namespace address_test_data_contacts
@@ -16,7 +17,8 @@ namespace address_test_data_contacts
         static void Main(string[] args)
         {
             int count = Convert.ToInt32(args[0]);
-            StreamWriter writer = new StreamWriter(args[1]);
+            string filename = args[1];
+           
             string format = args[2];
 
             List<ContactData> contacts = new List<ContactData>();
@@ -30,24 +32,59 @@ namespace address_test_data_contacts
                 });
 
             }
-            if (format == "csv")
+            if (format == "excel")
             {
-                writeContactsToCsvFile(contacts, writer);
-            }
-            else if (format == "xml")
-            {
-                writeContactsToXmlFile(contacts, writer);
-            }
-            else if (format == "json")
-            {
-                writeContactsToJsonFile(contacts, writer);
+                writeContactsToExcelFile(contacts, filename);
             }
             else
             {
-                System.Console.Out.Write("Unrecognized format" + format);
+                StreamWriter writer = new StreamWriter(filename);
+                if (format == "csv")
+                {
+                    writeContactsToCsvFile(contacts, writer);
+                }
+                else if (format == "xml")
+                {
+                    writeContactsToXmlFile(contacts, writer);
+                }
+                else if (format == "json")
+                {
+                    writeContactsToJsonFile(contacts, writer);
+                }
+                else
+                {
+                    System.Console.Out.Write("Unrecognized format" + format);
+                }
+                writer.Close();
             }
-            writer.Close();
         }
+
+        static void writeContactsToExcelFile(List<ContactData> contacts, string filename)
+        {
+            Excel.Application app = new Excel.Application();
+            app.Visible = true;
+            Excel.Workbook wb = app.Workbooks.Add();
+            Excel.Worksheet sheet = wb.ActiveSheet;
+
+            int row = 1;
+
+            foreach (ContactData contact in contacts)
+            {
+                sheet.Cells[row, 1] = contact.Firstname;
+                sheet.Cells[row, 1] = contact.Lastname;
+                sheet.Cells[row, 1] = contact.Middlename;
+                row++;
+            }
+            string fullPath = Path.Combine(Directory.GetCurrentDirectory(), filename);
+            File.Delete(fullPath);
+            wb.SaveAs(fullPath);
+
+            wb.Close();
+            app.Visible = false;
+            app.Quit();
+        }
+
+
 
 
 
