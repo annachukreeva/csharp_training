@@ -89,24 +89,21 @@ namespace WebAddressbooktests
             Assert.AreEqual(oldContacts, newContacts);
         }
 
-      //  [Test]
-       // public void EmptyAddNewContactTest()
-       // {
-         //   ContactData contact = new ContactData("");
-        //    contact.Lastname = "";
 
-         //   List<ContactData> oldContacts = app.Contacts.GetContactList();
 
-         //   app.Contacts.CreateContact(contact);
+        [Test]
+        public void TestDBConnectivityContacts()
+        {
+            DateTime start = DateTime.Now;
+            List<ContactData> fromUI = app.Contacts.GetContactList();
+            DateTime end = DateTime.Now;
+            System.Console.Out.WriteLine(end.Subtract(start));
 
-         //   Assert.AreEqual(oldContacts.Count + 1, app.Contacts.GetContactCount());
-
-        //    List<ContactData> newContacts = app.Contacts.GetContactList();
-         //   oldContacts.Add(contact);
-         //   oldContacts.Sort();
-         //   newContacts.Sort();
-         //   Assert.AreEqual(oldContacts, newContacts); ;
-       // }
+            start = DateTime.Now;
+            List<ContactData> fromDb = ContactData.GetAll();
+            end = DateTime.Now;
+            System.Console.Out.WriteLine(end.Subtract(start));
+        }
     }
 }
           

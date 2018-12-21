@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using System.Xml;
 using System.Xml.Serialization;
@@ -147,6 +148,20 @@ namespace WebAddressbooktests
             Assert.AreEqual(oldGroups, newGroups);
 
         }
-    }                   
+
+        [Test]
+        public void TestDBConnectivityGroups()
+        {
+            DateTime start = DateTime.Now;
+            List<GroupData> fromUI = app.Groups.GetGroupList();
+            DateTime end = DateTime.Now;
+            System.Console.Out.WriteLine(end.Subtract(start));
+
+            start = DateTime.Now;
+            List<GroupData> fromDb = GroupData.GetAll();
+            end = DateTime.Now;
+            System.Console.Out.WriteLine(end.Subtract(start));
+        }
+     }                   
  }
   
