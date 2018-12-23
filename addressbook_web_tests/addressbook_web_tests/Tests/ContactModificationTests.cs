@@ -8,7 +8,8 @@ using OpenQA.Selenium;
 
 namespace WebAddressbooktests
 {
-    public class ContactModificationTests : AuthTestBase
+    //public class ContactModificationTests : AuthTestBase
+      public class ContactModificationTests : GroupTestBase
     {
         [Test]
         public void ContactModificationTest()
