@@ -82,6 +82,7 @@
     <Compile Include="appmanager\ContactHelper.cs" />
     <Compile Include="model\AddressBookDB.cs" />
     <Compile Include="model\GroupContactRelation.cs" />
+    <Compile Include="Tests\AddingContactsToGroupTests.cs" />
     <Compile Include="Tests\AuthTestBase.cs" />
     <Compile Include="Tests\ContactInformationalTests.cs" />
     <Compile Include="Tests\ContactModificationTests.cs" />

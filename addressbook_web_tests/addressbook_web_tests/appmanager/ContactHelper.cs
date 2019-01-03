@@ -46,7 +46,7 @@ namespace WebAddressbooktests
             return new List<ContactData>(contactCache);
         }
 
-       
+
         public string GetContactInformationFromDetails(int index)
         {
             manager.Navigator.GoToHomePage();
@@ -59,7 +59,7 @@ namespace WebAddressbooktests
             details = Regex.Replace(details, "W:", "");
             details = Regex.Replace(details, "[ \n\r]", "");
 
-            return details ;
+            return details;
         }
 
         public ContactHelper InitContactDetails(int index)
@@ -67,7 +67,7 @@ namespace WebAddressbooktests
             driver.FindElement(By.XPath("(//img[@alt='Details'])[" + (index + 1) + " ]")).Click();
             return this;
         }
-    
+
 
         public int GetContactCount()
         {
@@ -82,7 +82,7 @@ namespace WebAddressbooktests
 
         public bool acceptNextAlert { get; private set; }
 
-        public ContactHelper(ApplicationManager manager): base(manager)
+        public ContactHelper(ApplicationManager manager) : base(manager)
         {
         }
         public ContactHelper CreateContact(ContactData contact)
@@ -142,14 +142,14 @@ namespace WebAddressbooktests
             Type(By.Name("email2"), contact.Email2);
             Type(By.Name("email3"), contact.Email3);
             Type(By.Name("homepage"), contact.Homepage);
-          //  new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
+            //  new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
             driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[19]")).Click();
-          //  new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
+            //  new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
             driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[45]")).Click();
-         //   Type(By.Name("byear"), contact.Byear);
-         //   new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(contact.Aday);
+            //   Type(By.Name("byear"), contact.Byear);
+            //   new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(contact.Aday);
             driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[19]")).Click();
-         //   new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(contact.Amonth);
+            //   new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(contact.Amonth);
             driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[44]")).Click();
             Type(By.Name("ayear"), contact.Ayear);
             Type(By.Name("address2"), contact.Address2);
@@ -191,7 +191,7 @@ namespace WebAddressbooktests
         public ContactHelper SelectContactById(String id)
         {
             driver.FindElement(By.XPath("(//input[@name='selected[]' and @value='" + id + "'])")).Click();
-          //  driver.FindElement(By.XPath("(//input[@name='selected[]' and @value='" + id + "'])")).Click();
+            //  driver.FindElement(By.XPath("(//input[@name='selected[]' and @value='" + id + "'])")).Click();
 
             return this;
         }
@@ -209,8 +209,8 @@ namespace WebAddressbooktests
             return this;
         }
 
-       public ContactData GetContactInformationFromEditTForm(int index)
-       {
+        public ContactData GetContactInformationFromEditTForm(int index)
+        {
             manager.Navigator.GoToHomePage();
             InitContactModification1(0);
             string firstName = driver.FindElement(By.Name("firstname")).GetAttribute("value");
@@ -271,6 +271,38 @@ namespace WebAddressbooktests
             string text = driver.FindElement(By.TagName("label")).Text;
             Match m = new Regex(@"\d+").Match(text);
             return Int32.Parse(m.Value);
+        }
+
+        public void AddContactToGroup(ContactData contact, GroupData group)
+        {
+            manager.Navigator.GoToHomePage();
+            ClearGroupFilter();
+            SelectContact2(contact.Id);
+            SelectGroupToAdd(group.Name);
+            CommitAddingContactGroup();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+
+        }
+
+        private void CommitAddingContactGroup()
+        {
+            driver.FindElement(By.Name("add")).Click();
+        }
+
+        private void SelectGroupToAdd(string name)
+        {
+            new SelectElement(driver.FindElement(By.Name("to_group"))).SelectByText(name);
+        }
+
+        private void SelectContact2(string contactId)
+        {
+            driver.FindElement(By.Id(contactId)).Click();
+        }
+
+        private void ClearGroupFilter()
+        {
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
         }
     }
 }

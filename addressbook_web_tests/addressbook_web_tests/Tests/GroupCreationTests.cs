@@ -148,8 +148,18 @@ namespace WebAddressbooktests
         [Test]
         public void TestDBConnectivity()
         {
-            foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())  {
+            foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())
+            {
                 System.Console.Out.WriteLine(contact);
+            }
+        }
+
+            [Test]
+        public void TestDBConnectivity1()
+        {
+            foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())
+            {
+                System.Console.Out.WriteLine(contact.Deprecated);
             }
         }
      }                   
