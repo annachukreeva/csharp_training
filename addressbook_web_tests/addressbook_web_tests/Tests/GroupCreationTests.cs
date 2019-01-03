@@ -144,6 +144,14 @@ namespace WebAddressbooktests
             end = DateTime.Now;
             System.Console.Out.WriteLine(end.Subtract(start));
         }
+
+        [Test]
+        public void TestDBConnectivity()
+        {
+            foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())  {
+                System.Console.Out.WriteLine(contact);
+            }
+        }
      }                   
  }
   

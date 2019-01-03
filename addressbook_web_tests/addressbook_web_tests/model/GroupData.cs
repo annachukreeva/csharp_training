@@ -80,9 +80,18 @@ namespace WebAddressbooktests
             }
         }
 
-        public static implicit operator GroupData(ContactData v)
+        public List<ContactData> GetContacts()
         {
-            throw new NotImplementedException();
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from c in db.Contacts
+                        from gcr in db.GCR.Where(p => p.GroupId == Id && p.ContactId == c.Id)
+                        select c).Distinct().ToList();
+            }
         }
+       // public static implicit operator GroupData(ContactData v)
+        //{
+          //  throw new NotImplementedException();
+       // }
     }
 }

@@ -150,7 +150,9 @@ namespace WebAddressbooktests
         [Column(Name = "phone2")]
         public string Phone2 { get; set; }
 
-        [Column(Name = "id"), PrimaryKey, Identity]
+       // [Column(Name = "id"), PrimaryKey, Identity]
+
+        [Column(Name = "id"), PrimaryKey]
 
         public string Id { get; set; }
 
