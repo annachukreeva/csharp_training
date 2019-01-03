@@ -8,7 +8,8 @@ using OpenQA.Selenium;
 
 namespace WebAddressbooktests
 {
- public class ContactRemovalTests : AuthTestBase
+  //  public class ContactRemovalTests : AuthTestBase
+        public class ContactRemovalTests : ContactTestBase
     {
         [Test]
         public void DeleteContactTest()
@@ -20,18 +21,27 @@ namespace WebAddressbooktests
                 app.Contacts.CreateContact(contact);
             }
 
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            // List<ContactData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAll();
+            ContactData toBeRemoved = oldContacts[0];
 
-            app.Contacts.Remove(0);
+            app.Contacts.Remove(toBeRemoved);
 
-        
 
-            List<ContactData> newContacts = app.Contacts.GetContactList();
+
+            // List<ContactData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> newContacts = ContactData.GetAll();
 
             oldContacts.RemoveAt(0);
 
-
             Assert.AreEqual(oldContacts, newContacts);
+
+           foreach (ContactData contact in newContacts)
+              {
+                Assert.AreNotEqual(contact.Id, toBeRemoved.Id);
+              }
+
+           // Assert.AreEqual(oldContacts, toBeRemoved);
         }
     }
 }

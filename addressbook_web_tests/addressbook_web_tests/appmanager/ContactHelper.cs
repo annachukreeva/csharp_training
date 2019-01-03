@@ -46,6 +46,7 @@ namespace WebAddressbooktests
             return new List<ContactData>(contactCache);
         }
 
+       
         public string GetContactInformationFromDetails(int index)
         {
             manager.Navigator.GoToHomePage();
@@ -141,14 +142,14 @@ namespace WebAddressbooktests
             Type(By.Name("email2"), contact.Email2);
             Type(By.Name("email3"), contact.Email3);
             Type(By.Name("homepage"), contact.Homepage);
-            new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
+          //  new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
             driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[19]")).Click();
-            new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
+          //  new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
             driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[45]")).Click();
-            Type(By.Name("byear"), contact.Byear);
-            new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(contact.Aday);
+         //   Type(By.Name("byear"), contact.Byear);
+         //   new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(contact.Aday);
             driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[19]")).Click();
-            new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(contact.Amonth);
+         //   new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(contact.Amonth);
             driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[44]")).Click();
             Type(By.Name("ayear"), contact.Ayear);
             Type(By.Name("address2"), contact.Address2);
@@ -173,6 +174,25 @@ namespace WebAddressbooktests
             SelectContact(index);
             InitRemovalContact();
             ConfirmRemovalContact();
+            return this;
+        }
+
+
+        public ContactHelper Remove(ContactData contact)
+        {
+
+            manager.Navigator.GoToHomePage();
+            SelectContactById(contact.Id);
+            InitRemovalContact();
+            ConfirmRemovalContact();
+            return this;
+        }
+
+        public ContactHelper SelectContactById(String id)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]' and @value='" + id + "'])")).Click();
+          //  driver.FindElement(By.XPath("(//input[@name='selected[]' and @value='" + id + "'])")).Click();
+
             return this;
         }
 

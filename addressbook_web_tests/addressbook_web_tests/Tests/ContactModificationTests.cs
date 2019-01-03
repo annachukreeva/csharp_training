@@ -23,13 +23,19 @@ namespace WebAddressbooktests
             ContactData newData = new ContactData("Ivan");
             newData.Lastname = "Ivanov";
             newData.Bday = "1";
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
-            app.Contacts.Modify(newData);
-            List<ContactData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAll();
+            // List<ContactData> oldContacts = app.Contacts.GetContactList();
+            ContactData toBeModified = oldContacts[0];
+            app.Contacts.Modify(toBeModified);
+            List<ContactData> newContacts = ContactData.GetAll();
+            // List<ContactData> newContacts = app.Contacts.GetContactList();
             oldContacts[0].Firstname = newData.Firstname;
             oldContacts.Sort();
             newContacts.Sort();
-            Assert.AreEqual(oldContacts, newContacts);
+           // Assert.AreEqual(oldContacts, newContacts);
+            Assert.AreEqual(oldContacts, toBeModified.Id);
+       
+
         }
     }
 }

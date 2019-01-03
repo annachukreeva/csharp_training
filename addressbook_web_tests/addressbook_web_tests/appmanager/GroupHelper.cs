@@ -43,6 +43,7 @@ namespace WebAddressbooktests
             return this; 
         }
 
+
         // public GroupHelper Remove(GroupData group)
         // {
         //    manager.Navigator.GoToGroupsPage();
@@ -103,7 +104,24 @@ namespace WebAddressbooktests
             return this;
         }
 
-     
+
+        public GroupHelper Modify(GroupData group)
+        {
+            manager.Navigator.GoToGroupsPage();
+            SelectGroup2(group.Id);
+            InitGroupModification();
+            FillGroupFormin(group);
+            SubmitGroupModification();
+            manager.Navigator.ReturnToGroupPage();
+            return this;
+        }
+
+        public GroupHelper SelectGroup2(String id)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]' and  @vlaue='"+id+"'])")).Click();
+            //driver.FindElement(By.XPath("//input[@name='selected[]']")).Click();
+            return this;
+        }
 
         public GroupHelper Create(GroupData group)
         {

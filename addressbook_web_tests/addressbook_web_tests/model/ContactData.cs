@@ -152,7 +152,7 @@ namespace WebAddressbooktests
 
         [Column(Name = "id"), PrimaryKey, Identity]
 
-
+        public string Id { get; set; }
 
 
         public string AllPhones

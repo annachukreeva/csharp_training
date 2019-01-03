@@ -79,6 +79,10 @@ namespace WebAddressbooktests
                return(from g in db.Groups select g).ToList();
             }
         }
-             
+
+        public static implicit operator GroupData(ContactData v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
