@@ -27,6 +27,8 @@ namespace WebAddressbooktests
 
         private List<ContactData> contactCache = null;
 
+        
+
         public List<ContactData> GetContactList()
         {
             if (contactCache == null)
@@ -304,6 +306,20 @@ namespace WebAddressbooktests
         {
             new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
         }
+
+
+        public void DeleteContactFromGroup(ContactData contact, GroupData group)
+        {
+            manager.Navigator.GoToHomePage();
+            ClearGroupFilter();
+            SelectContact2(contact.Id);
+            SelectGroupToAdd(group.Name);
+            CommitAddingContactGroup();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+        }
+
+
     }
-}
+ }
 

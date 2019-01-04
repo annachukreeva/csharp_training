@@ -71,14 +71,11 @@ namespace WebAddressbooktests
             {
                 return 1;
             }
-            if (Object.ReferenceEquals(other.Lastname, Lastname))
+            if (Lastname.CompareTo(other.Lastname) == 0)
             {
                 return Firstname.CompareTo(other.Firstname);
             }
-            else
-            {
-                return Lastname.CompareTo(other.Lastname);
-            }
+            return Lastname.CompareTo(other.Lastname);
         }
 
         [Column(Name = "firstname")]
