@@ -20,7 +20,7 @@ namespace WebAddressbooktests
             app.Contacts.DeleteContactFromGroup(contact, group);
 
             List<ContactData> newList = group.GetContacts();
-            oldList.Delete(contact);
+           //S oldList.Delete(contact);
             newList.Sort();
             oldList.Sort();
 

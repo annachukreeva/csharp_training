@@ -224,7 +224,49 @@ namespace WebAddressbooktests
                 }
                 else
                 {
-                    return Firstname + Lastname + Address + Home + Mobile + Work + Email + Email2 + Email3;
+                    string details ="";
+                    if ( Firstname != string.Empty)
+                    { 
+                        details = Firstname;
+                    }
+                    if ( Middlename != string.Empty)
+                        details += " " + Middlename;
+                    if (Lastname != string.Empty)
+                        details += " " + Lastname ;
+                    if (Nickname != string.Empty)
+                        details += "\r\n" + Nickname;
+                    if (Title != string.Empty)
+                        details += "\r\n" + Title;
+                    if (Company != string.Empty)
+                        details += "\r\n" + Company;
+                    if (Address != string.Empty)
+                        details += "\r\n" + Address;
+
+                    details += "\r\n";
+
+                    if (Home != string.Empty)
+                        details += "\r\n" + "H: " + Home;
+                    if (Mobile != string.Empty)
+                        details += "\r\n" + "M: " + Mobile;
+                    if (Work != string.Empty)
+                        details += "\r\n" + "W: " + Work;
+                    if (Fax != string.Empty)
+                        details += "\r\n" + "F: " + Fax;
+
+                    if ( Home+Mobile+Work+Fax != string.Empty)
+                        details += "\r\n";
+
+                    if (Email != string.Empty)
+                        details += "\r\n" + Email;
+                    if (Email2 != string.Empty)
+                        details += "\r\n" + Email2;
+                    if (Email3 != string.Empty)
+                        details += "\r\n" + Email3;
+                    if (Homepage != string.Empty )
+                        details += "\r\n" + "Homepage:\r\n"+ Homepage;
+
+                    return details;
+                    //return Firstname + Lastname + Address + Home + Mobile + Work + Email + Email2 + Email3;
                 }
             }
             set
