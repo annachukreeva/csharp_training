@@ -319,6 +319,11 @@ namespace WebAddressbooktests
             driver.FindElement(By.Name("add")).Click();
         }
 
+        private void CommitRemovingContactGroup()
+        {
+            driver.FindElement(By.Name("remove")).Click();
+        }
+
         private void SelectGroupToAdd(string name)
         {
             new SelectElement(driver.FindElement(By.Name("to_group"))).SelectByText(name);
@@ -333,15 +338,19 @@ namespace WebAddressbooktests
         {
             new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
         }
-
+        private void SelectGroupToDelContact(string name)
+        {
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText(name);
+        }
 
         public void DeleteContactFromGroup(ContactData contact, GroupData group)
         {
             manager.Navigator.GoToHomePage();
             ClearGroupFilter();
+            SelectGroupToDelContact(group.Name);
             SelectContact2(contact.Id);
-            SelectGroupToAdd(group.Name);
-            CommitAddingContactGroup();
+
+            CommitRemovingContactGroup();
             new WebDriverWait(driver, TimeSpan.FromSeconds(10))
                 .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
         }
